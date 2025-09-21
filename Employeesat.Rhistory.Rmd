@@ -1,0 +1,31 @@
+Name<-c("Ronak","Sam","Joe","Mary","Jane","Sally")
+Age<-c(21,24,20,15,19,22)
+Gender <- c("M","M","M","F","F","F")
+GPA <- c(3.7,2.9,3.1,4.0,3.4,3.5)
+mydataFrame<-data.frame(Name,Age, Gender, GPA)
+mydataFrame
+ncol(myDataFrame)
+nrow(mydataFrame)
+tail(mydataFrame)
+str(mydataFrame)
+dim(mydataFrame)
+class(mydataFrame$Gender)
+head(mydataFrame,2)
+class(mydataFrame$Age)
+library(readr)
+Typical_Employee_Survey_Data <- read_csv("~/Downloads/Typical_Employee_Survey_Data.csv")
+View(Typical_Employee_Survey_Data)
+MyData<-Typical_Employee_Survey_Data
+str(MyData)
+head(MyData)
+plot(MyData$YearsInJob)
+savehistory("~/jen/Employeesat.Rhistory")
+title: "HW 1"
+author: "Jennifer Lee"
+output: html_document
+```{r}
+# Heading(one hash)
+## Heading 2 (two hashes)
+
+```
+
