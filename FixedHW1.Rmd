@@ -1,0 +1,77 @@
+---
+title: "Fixed HW"
+output: html_document
+date: "2025-09-23"
+---
+
+```{r}
+Typical_Employee_Survey_Data <- read.csv("Downloads/Typical_Employee_Survey_Data.csv")
+ plot(Typical_Employee_Survey_Data$Age)
+ head(Typical_Employee_Survey_Data$Age)
+ tail(Typical_Employee_Survey_Data$Age)
+ var(Typical_Employee_Survey_Data$Age)
+ plot(Typical_Employee_Survey_Data$Age,Typical_Employee_Survey_Data$Gender)
+fivenum(Typical_Employee_Survey_Data$Age)
+fivenum(Typical_Employee_Survey_Data$Gender)
+fivenum(Typical_Employee_Survey_Data$JobSatisfaction)
+fivenum(Typical_Employee_Survey_Data$ImportantJobCharacteristcs)
+fivenum(Typical_Employee_Survey_Data$YearsInJob)
+fivenum(Typical_Employee_Survey_Data$PromotionLiklihood)
+fivenum(Typical_Employee_Survey_Data$DecisionAuthority)
+fivenum(Typical_Employee_Survey_Data$BudgetDecisionAuthority)
+fivenum(Typical_Employee_Survey_Data$OrganizationPride)
+fivenum(Typical_Employee_Survey_Data$jobChurnForPayLiklihood)
+fivenum(Typical_Employee_Survey_Data$WorkplaceRelationshipScore)
+boxplot(Typical_Employee_Survey_Data$Age)
+boxplot(Typical_Employee_Survey_Data, main="Survey Data")
+boxplot(Typical_Employee_Survey_Data, main="Survey Data", xlab="Characteristics",ylab="Score")
+boxplot(Typical_Employee_Survey_Data, main="Survey Data", xlab="Characteristics",ylab="Score", col = "pink")
+boxplot(Typical_Employee_Survey_Data$YearsInJob, xlab="years",ylab="Frequency",col = "purple")
+ boxplot(Typical_Employee_Survey_Data$WorkplaceRelationshipScore,xlab="relationship strength", ylab="score",col = "blue")
+class(Typical_Employee_Survey_Data$Gender)
+class(Typical_Employee_Survey_Data$Age)
+Typical_Employee_Survey_Data$Gender <-as.factor(Typical_Employee_Survey_Data$Gender)
+class(Typical_Employee_Survey_Data$Gender)
+Typical_Employee_Survey_Data$OrganizationPride<-as.factor(Typical_Employee_Survey_Data$OrganizationPride)
+class(Typical_Employee_Survey_Data$OrganizationPride)
+pie(Typical_Employee_Survey_Data$Age,main = "Age", col = "pink")
+barplot(Typical_Employee_Survey_Data$Age, main="Age Distribution",col="red", xlab="People", ylab="Age")
+hist(Typical_Employee_Survey_Data$YearsInJob,main = "Years in Job Distribution ", xlab="years", ylab = "frequency",col="green")
+hist(Typical_Employee_Survey_Data$DecisionAuthority,main="Decision Authoirty", xlab="Authority",ylab="frequency",col="maroon")
+hist(Typical_Employee_Survey_Data$PromotionLiklihood,main="Prommotion Score", xlab="Pride Score",ylab="Frequency",col="turquoise")
+hist(Typical_Employee_Survey_Data$jobChurnForPayLiklihood,main="Pay Likelihood",col="lavender")
+pie(Typical_Employee_Survey_Data$BudgetDecisionAuthority, main="Budget Authority")
+plot(Typical_Employee_Survey_Data$Age,Typical_Employee_Survey_Data$JobSatisfaction)
+plot(Typical_Employee_Survey_Data$Age,Typical_Employee_Survey_Data$YearsInJob, main = "Age vs Years in Job", col="pink")
+cor(Typical_Employee_Survey_Data$Age,Typical_Employee_Survey_Data$YearsInJob)
+var(Typical_Employee_Survey_Data$Age,Typical_Employee_Survey_Data$YearsInJob)
+sd(Typical_Employee_Survey_Data$Age)
+sd(Typical_Employee_Survey_Data$YearsInJob)
+mean(Typical_Employee_Survey_Data$Age)
+plot(Typical_Employee_Survey_Data$DecisionAuthority,Typical_Employee_Survey_Data$PromotionLiklihood,main="Budget Authority vs Prommotion Chances",xlab="decision authority",ylab="Prommotion Chances",col="hotpink")
+plot(Typical_Employee_Survey_Data$JobSatisfaction,Typical_Employee_Survey_Data$Age,xlab="Job Satisfaction", ylab="Age", main="Age vs Satisfaction ",col="deeppink")
+str(Typical_Employee_Survey_Data)
+table(Typical_Employee_Survey_Data$DecisionAuthority,Typical_Employee_Survey_Data$PromotionLiklihood)
+table(Typical_Employee_Survey_Data$OrganizationPride,Typical_Employee_Survey_Data$WorkplaceRelationshipScore)
+
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
