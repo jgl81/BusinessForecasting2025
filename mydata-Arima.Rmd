@@ -1,0 +1,53 @@
+---
+title: "arima my data"
+output: html_document
+date: "2025-11-19"
+---
+
+```{r}
+library(readr)
+library(fpp2)
+BLSJOBSJ <- read_csv("Desktop/BLSJOBSJ.csv")
+newjobs_ts<-ts(BLSJOBSJ$`Total Jobs (private and government)`,start=c(2007,01),frequency = 12)
+ndiffs(newjobs_ts)
+tsdisplay(newjobs_ts)
+auto.arima(newjobs_ts, trace=TRUE, stepwise = FALSE)
+auto.arima(newjobs_ts)
+attributes( auto.arima(newjobs_ts))
+Jobs_arima<-auto.arima(newjobs_ts)
+acf(Jobs_arima$residuals)
+#This acf plot look good, nothing stands out in the residuals
+plot.ts(residuals(Jobs_arima))
+hist(Jobs_arima$residuals)
+tsdiag(Jobs_arima)
+Box.test(residuals(Jobs_arima), lag=20, type="Ljung")
+plot(forecast(Jobs_arima,h=5,level=c(99.5)))
+accuracy(forecast(Jobs_arima,h=5,level=c(99.5)))
+resid<-residuals(forecast(Jobs_arima,h=5,level=c(99.5)))
+plot(resid)
+fitt<-fitted.values(forecast(Jobs_arima,h=5,level=c(99.5)))
+plot(resid,fitt)
+#The residuals are mostly centered in the middle with a few large outliers on both ends. These outliers skew the appearance of the residuals but they look pretty good. 
+plot(resid,newjobs_ts)
+#This plot looks a little linear, implying that as actual value increase, the residuals increase. The model may be missing some signals. 
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
